@@ -1,0 +1,5 @@
+Description:
+ Ever used a generator and though "Oops!" I didn't mean to do that.
+ script/generate undo
+ is a quick and easy way to back track the changes made by a generator.
+

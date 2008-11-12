@@ -1,0 +1,45 @@
+==Undo Generator Plugin
+
+Ever used a generator and wished that you could easily roll back 
+the changes?
+
+Enter script/generate undo
+
+==Features
+* Undo any generator command 
+* Keeps a log of all generator history in log/generator.log
+* Prompts before undo'ing any commands
+* Even works when you bail out of a generator command part way through!
+
+==Example
+
+  script/generate model WrongName
+        exists  app/models/
+        exists  test/unit/
+        exists  test/fixtures/
+        create  app/models/wrong_name.rb
+        create  test/unit/wrong_name_test.rb
+        create  test/fixtures/wrong_names.yml
+        exists  db/migrate
+        create  db/migrate/001_create_wrong_names.rb
+  
+  oops.. didn't want to do that.
+  
+  script/generate undo
+  Undo:  model WrongName [yn]? y
+      notempty  db/migrate
+      notempty  db
+            rm  db/migrate/001_create_wrong_names.rb
+            rm  test/fixtures/wrong_names.yml
+            rm  test/unit/wrong_name_test.rb
+            rm  app/models/wrong_name.rb
+      notempty  test/fixtures
+      notempty  test
+      notempty  test/unit
+      notempty  test
+      notempty  app/models
+      notempty  app
+
+
+Copyright (c) 2007 [Martin Sadler], released under the MIT license
+http://www.beyondthetype.com
