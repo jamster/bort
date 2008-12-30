@@ -34,4 +34,10 @@ namespace :db do
     remote_db_download
     remote_db_cleanup
   end
+  
+  desc "Create the database"
+  task :create do 
+    `cd #{current_path}; rake db:create RAILS_ENV=#{rails_env}`
+  end
+  
 end
