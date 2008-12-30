@@ -37,7 +37,7 @@ namespace :db do
   
   desc "Create the database"
   task :create do 
-    `cd #{current_release} && rake db:create RAILS_ENV=#{rails_env} --trace`
+    run "cd #{current_release} && rake db:create RAILS_ENV=#{rails_env} --trace"
   end
 
 end
