@@ -64,7 +64,7 @@ class BortMigration < ActiveRecord::Migration
     
     # Create default admin user
     user = User.create do |u|
-      u.password = u.password_confirmation = 'chester'
+      u.password = u.password_confirmation = APP_CONFIG[:password]
       u.email = APP_CONFIG[:admin_email]
     end
     
